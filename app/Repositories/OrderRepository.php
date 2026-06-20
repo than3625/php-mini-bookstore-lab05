@@ -96,7 +96,7 @@ class OrderRepository
     public function update(int $id, array $data): bool
     {
         $sql = "UPDATE orders
-                SET order_code=:order_code, customer_name=:customer_name, customer_email=:customer_email, total_amount=:total_amount, status=:status, updated_at = NOW()
+                SET order_code=:order_code, customer_name=:customer_name, customer_email=:customer_email, total_amount=:total_amount, status=:status
                 WHERE id=:id";
         try {
             $stmt = $this->db->prepare($sql);

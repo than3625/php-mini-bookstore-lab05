@@ -12,7 +12,11 @@
     <label>Customer Name</label>
     <input type="text" name="customer_name" value="<?= e($old['customer_name'] ?? '') ?>">
     <?php if (!empty($errors['customer_name'])): ?><p class="error"><?= e($errors['customer_name']) ?></p><?php endif; ?>
-
+    
+    <label>Customer Email</label>
+    <input type="email" name="customer_email" value="<?= e($old['customer_email'] ?? '') ?>">
+    <?php if (!empty($errors['customer_email'])): ?><p class="error"><?= e($errors['customer_email']) ?></p><?php endif; ?>
+    
     <label>Total Amount (đ)</label>
     <input type="number" name="total_amount" value="<?= e($old['total_amount'] ?? '') ?>" step="any">
     <?php if (!empty($errors['total_amount'])): ?><p class="error"><?= e($errors['total_amount']) ?></p><?php endif; ?>

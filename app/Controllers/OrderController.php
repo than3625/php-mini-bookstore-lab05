@@ -82,13 +82,14 @@ class OrderController
 
         $errors = [];
         $old = [
+            'id'             => $order['id'],
             'order_code' => $order['order_code'],
             'customer_name' => $order['customer_name'],
             'customer_email' => $order['customer_email'],
             'total_amount' => $order['total_amount'],
             'status' => $order['status'],
         ];
-        view('orders/edit', compact('errors', 'old', 'id'));
+        view('orders/edit', compact('errors', 'old'));
     }
 
     public function update(): void
@@ -103,6 +104,7 @@ class OrderController
         $data = $this->validate($_POST);
         $errors = $data['errors'];
         $old = $data['values'];
+        $old['id'] = $id;
 
         if (!empty($errors)) {
             view('orders/edit', compact('errors', 'old', 'id'));
@@ -110,7 +112,9 @@ class OrderController
         }
 
         try {
-            $this->repository()->update($id, $old);
+            $values = $data['values'];
+            $values['id'] = $id;
+            $this->repository()->update($id, $values);
             flash_set('success', 'Cập nhật thông tin đơn hàng thành công.');
             redirect('/orders');
         } catch (DuplicateRecordException $e) {
