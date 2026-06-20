@@ -97,7 +97,7 @@ class BookRepository
     public function update(int $id, array $data): bool
     {
         $sql = "UPDATE books
-                SET title=:title, author=:author, isbn=:isbn, price=:price, status=:status, updated_at = NOW()
+                SET title=:title, author=:author, isbn=:isbn, price=:price, status=:status
                 WHERE id=:id";
         try {
             $stmt = $this->db->prepare($sql);

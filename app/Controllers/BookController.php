@@ -137,7 +137,9 @@ class BookController
         }
 
         try {
-            $this->repository()->update($id, $data['values']);
+            $values = $data['values'];
+            $values['id'] = $id;
+            $this->repository()->update($id, $values);
             flash_set('success', 'Cập nhật thông tin sách thành công.');
             redirect('/books');
         } catch (DuplicateRecordException $e) {
