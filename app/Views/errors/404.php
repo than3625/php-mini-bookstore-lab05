@@ -1,0 +1,9 @@
+<?php ob_start(); ?>
+<h1>404 - Page Not Found</h1>
+<p>Sorry, the page you are looking for does not exist or has been moved.</p>
+<a href="/" class="btn primary">Back to dashboard</a>
+<?php
+$content = ob_get_clean();
+$title = 'Page Not Found';
+require __DIR__ . '/../layout.php';
+?>
